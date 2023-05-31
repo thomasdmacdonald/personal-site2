@@ -26,11 +26,11 @@ const Home: NextPage = () => {
         />
 
         <div className="flex flex-col-reverse px-20 h-2/5 bg-gradient-to-r from-red-500 to-orange-500 rounded-bl-3xl z-10">
-          <p className="text-8xl text-neu font-bold">Thomas</p>
+          <p className="text-8xl text-neu font-bolder">Thomas</p>
           <p className="text-lg text-neu font-bold">Hi, my name is</p>
         </div>
         <div className="px-20 h-3/5 bg-neu rounded-tr-3xl z-10">
-          <p className={`${colorOn ? "text-primary" : "text-neu"} text-8xl font-bold textShadowOut transitionSlow`}>MacDonald</p>
+          <p className={`${colorOn ? "text-primary" : "text-neu"} text-8xl font-bolder textShadowOut transitionSlow`}>MacDonald</p>
           <div className="h-20" />
           <Toggle active={colorOn} setActive={setColorOn}/>
         </div>

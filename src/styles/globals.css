@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    background-color: #e2e8f0;
+    font-family: 'DMSans';
+    font-style: normal;
+}
+
 @layer components {
     .transitionSlow {
         @apply transition-all duration-500 ease-in-out
@@ -20,4 +26,46 @@
         opacity: 1;
         transition: opacity 150ms ease-in-out;
     }
+}
+
+@font-face {
+    font-family: "DMSans";
+    src: url("../assets/fonts/DM_Sans/DMSans-Regular.woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "DMSans";
+    src: url("../assets/fonts/DM_Sans/DMSans-Bold.woff");
+    font-weight: bolder;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "DMSans";
+    src: url("../assets/fonts/DM_Sans/DMSans-BoldItalic.woff");
+    font-weight: bolder;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "DMSans";
+    src: url("../assets/fonts/DM_Sans/DMSans-Italic.woff");
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "DMSans";
+    src: url("../assets/fonts/DM_Sans/DMSans-Medium.woff");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "DMSans";
+    src: url("../assets/fonts/DM_Sans/DMSans-MediumItalic.woff");
+    font-weight: bold;
+    font-style: italic;
 }
