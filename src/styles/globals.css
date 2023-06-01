@@ -6,6 +6,7 @@ body {
     background-color: #e2e8f0;
     font-family: 'DMSans';
     font-style: normal;
+    font-weight: normal;
 }
 
 @layer components {
@@ -38,14 +39,14 @@ body {
 @font-face {
     font-family: "DMSans";
     src: url("../assets/fonts/DM_Sans/DMSans-Bold.woff");
-    font-weight: bolder;
+    font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: "DMSans";
     src: url("../assets/fonts/DM_Sans/DMSans-BoldItalic.woff");
-    font-weight: bolder;
+    font-weight: bold;
     font-style: italic;
 }
 
@@ -56,7 +57,7 @@ body {
     font-style: italic;
 }
 
-@font-face {
+/* @font-face {
     font-family: "DMSans";
     src: url("../assets/fonts/DM_Sans/DMSans-Medium.woff");
     font-weight: bold;
@@ -68,4 +69,4 @@ body {
     src: url("../assets/fonts/DM_Sans/DMSans-MediumItalic.woff");
     font-weight: bold;
     font-style: italic;
-}
+} */
