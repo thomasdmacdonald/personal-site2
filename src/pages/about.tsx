@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { type NextPage } from 'next';
 import PageHeader from '~/components/text/PageHeader';
 
@@ -28,18 +28,79 @@ const devopsBlurb = [
   'I\'ve worked with a wide range of cloud services, from deploying and hosting servers, creating and deploying cloud functions, managing user pools, creating and managing databases, working on CI/CD pipelines.',
 ];
 
+const SKEW_DEGS = 45;
+function skewCard(event: MouseEvent, card: React.RefObject<HTMLDivElement>, header: string) {
+  const mouseX = event.clientX;
+  const mouseY = event.clientY;
+
+  if (!card.current) return;
+
+  const boundingRect = card.current?.getBoundingClientRect();
+  if (mouseY < boundingRect.bottom && mouseY > boundingRect.top
+    && mouseX < boundingRect.right && mouseX > boundingRect.left) {
+    const middleX = boundingRect.right - ((boundingRect.right - boundingRect.left) / 2);
+    const middleY = boundingRect.bottom - ((boundingRect.bottom - boundingRect.top) / 2);
+    const offsetX = ((mouseX - middleX)
+    / ((boundingRect.right - boundingRect.left) / 2)) * SKEW_DEGS;
+    const offsetY = ((mouseY - middleY)
+    / ((boundingRect.bottom - boundingRect.top) / 2)) * SKEW_DEGS;
+    card.current.style.transform = `perspective(5000px) rotateX(${offsetY}deg) rotateY(${offsetX}deg)`;
+  } else {
+    card.current.style.transform = 'perspective(5000px) rotateX(0deg) rotateY(0deg)';
+  }
+}
+
 interface AboutSectionProps {
   header: string,
-  body: string[]
+  body: string[],
 }
-const AboutSection : React.FC<AboutSectionProps> = ({ header, body }) => (
-  <div className="bg-neu neuShadowOut rounded-xl h-96 p-6">
-    <p className="text-3xl font-bold mb-4">{header}</p>
-    {body.map((text, i) => (
-      <p key={i} className="text-xl mb-2">{text}</p>
-    ))}
-  </div>
-);
+const AboutSection : React.FC<AboutSectionProps> = ({ header, body }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const handleCardMove = (e: MouseEvent) => skewCard(e, cardRef, header);
+  useEffect(() => {
+    document.addEventListener('mousemove', handleCardMove);
+    return () => {
+      document.removeEventListener('mousemove', handleCardMove);
+    };
+  }, []);
+
+  return (
+    <div
+      className="bg-neu neuShadowOut rounded-xl h-96 p-6"
+      ref={cardRef}
+      style={{
+        transform: 'perspective(5000px) rotateX(0) rotateY(0)',
+      }}
+    >
+      <p className="text-3xl font-bold mb-4">{header}</p>
+      {body.map((text, i) => (
+        <p key={header} className="text-xl mb-2">{text}</p>
+      ))}
+    </div>
+  );
+};
+const gridData = [
+  {
+    header: 'Frontend',
+    body: frontendBlurb,
+  },
+  {
+    header: 'Backend',
+    body: backendBlurb,
+  },
+  {
+    header: 'Databases',
+    body: databaseBlurb,
+  },
+  {
+    header: 'Machine Learning',
+    body: mlBlurb,
+  },
+  {
+    header: 'Dev ops',
+    body: devopsBlurb,
+  },
+];
 
 const About: NextPage = () => (
   <div style={{ marginLeft: '10%' }} className="w-4/5 pt-20 mb-20">
@@ -48,11 +109,9 @@ const About: NextPage = () => (
       <p key={i} className="text-lg mb-2">{text}</p>
     ))}
     <div className="grid sm:grid-cols-1 md:grid-cols-2 lg-grid-cols-3 xl:grid-cols-3 gap-10 mt-8">
-      <AboutSection header="Frontend" body={frontendBlurb} />
-      <AboutSection header="Backend" body={backendBlurb} />
-      <AboutSection header="Databases" body={databaseBlurb} />
-      <AboutSection header="Machine Learning" body={mlBlurb} />
-      <AboutSection header="Dev Ops" body={devopsBlurb} />
+      {gridData.map(({ header, body }) => (
+        <AboutSection key={header} header={header} body={body} />
+      ))}
     </div>
   </div>
 );
