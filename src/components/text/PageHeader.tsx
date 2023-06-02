@@ -1,14 +1,12 @@
-import React, { type PropsWithChildren } from 'react'
+import React, { type PropsWithChildren } from 'react';
 
 interface Props {
   className?: string,
   style?: object
 }
 
-const PageHeader: React.FC<PropsWithChildren<Props>> = ({ children,  className='', style={}}) => {
-  return (
-    <p className={`text-6xl text-bold ${className}}`} style={style}>{children}</p>
-  )
-}
+const PageHeader: React.FC<PropsWithChildren<Props>> = ({ children, className = '', style = {} }) => (
+  <p className={`text-6xl text-bold ${className}}`} style={style}>{children}</p>
+);
 
-export default PageHeader
+export default PageHeader;

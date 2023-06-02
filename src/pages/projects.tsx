@@ -1,10 +1,8 @@
-import React from 'react'
-import { type NextPage } from 'next'
+import React from 'react';
+import { type NextPage } from 'next';
 
-const Projects: NextPage = () => {
-    return (
-        <div>Projects</div>
-    )
-}
+const Projects: NextPage = () => (
+  <div>Projects</div>
+);
 
-export default Projects
+export default Projects;
