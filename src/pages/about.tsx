@@ -28,23 +28,45 @@ const devopsBlurb = [
   'I\'ve worked with a wide range of cloud services, from deploying and hosting servers, creating and deploying cloud functions, managing user pools, creating and managing databases, working on CI/CD pipelines.',
 ];
 
-const SKEW_DEGS = 45;
-function skewCard(event: MouseEvent, card: React.RefObject<HTMLDivElement>, header: string) {
+const SKEW_DEGS = 15;
+const FADE_IN_OFFSET = 50;
+function skewCard(
+  event: MouseEvent,
+  card: React.RefObject<HTMLDivElement>,
+  container: React.RefObject<HTMLDivElement>,
+) {
   const mouseX = event.clientX;
   const mouseY = event.clientY;
 
-  if (!card.current) return;
+  if (!card.current || !container.current) return;
 
-  const boundingRect = card.current?.getBoundingClientRect();
-  if (mouseY < boundingRect.bottom && mouseY > boundingRect.top
-    && mouseX < boundingRect.right && mouseX > boundingRect.left) {
+  const boundingRect = container.current?.getBoundingClientRect();
+  if (
+    mouseY < boundingRect.bottom + FADE_IN_OFFSET
+    && mouseY > boundingRect.top - FADE_IN_OFFSET
+    && mouseX < boundingRect.right + FADE_IN_OFFSET
+    && mouseX > boundingRect.left - FADE_IN_OFFSET
+  ) {
     const middleX = boundingRect.right - ((boundingRect.right - boundingRect.left) / 2);
     const middleY = boundingRect.bottom - ((boundingRect.bottom - boundingRect.top) / 2);
     const offsetX = ((mouseX - middleX)
     / ((boundingRect.right - boundingRect.left) / 2)) * SKEW_DEGS;
     const offsetY = ((mouseY - middleY)
     / ((boundingRect.bottom - boundingRect.top) / 2)) * SKEW_DEGS;
-    card.current.style.transform = `perspective(5000px) rotateX(${offsetY}deg) rotateY(${offsetX}deg)`;
+
+    const isInXBound = mouseX < boundingRect.right && mouseX > boundingRect.left;
+    const isInYBound = mouseY < boundingRect.bottom && mouseY > boundingRect.top;
+    const distanceX = Math.min(
+      boundingRect.right + FADE_IN_OFFSET - mouseX,
+      mouseX - (boundingRect.left - FADE_IN_OFFSET),
+    );
+    const distanceY = Math.min(
+      boundingRect.bottom + FADE_IN_OFFSET - mouseY,
+      mouseY - (boundingRect.top - FADE_IN_OFFSET),
+    );
+    const skewX = Math.min(offsetY, SKEW_DEGS) * (isInYBound ? 1 : (distanceY / FADE_IN_OFFSET));
+    const skewY = -Math.min(offsetX, SKEW_DEGS) * (isInXBound ? 1 : (distanceX / FADE_IN_OFFSET));
+    card.current.style.transform = `perspective(5000px) rotateX(${skewX}deg) rotateY(${skewY}deg)`;
   } else {
     card.current.style.transform = 'perspective(5000px) rotateX(0deg) rotateY(0deg)';
   }
@@ -56,7 +78,8 @@ interface AboutSectionProps {
 }
 const AboutSection : React.FC<AboutSectionProps> = ({ header, body }) => {
   const cardRef = useRef<HTMLDivElement>(null);
-  const handleCardMove = (e: MouseEvent) => skewCard(e, cardRef, header);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const handleCardMove = (e: MouseEvent) => skewCard(e, cardRef, containerRef);
   useEffect(() => {
     document.addEventListener('mousemove', handleCardMove);
     return () => {
@@ -65,17 +88,19 @@ const AboutSection : React.FC<AboutSectionProps> = ({ header, body }) => {
   }, []);
 
   return (
-    <div
-      className="bg-neu neuShadowOut rounded-xl h-96 p-6"
-      ref={cardRef}
-      style={{
-        transform: 'perspective(5000px) rotateX(0) rotateY(0)',
-      }}
-    >
-      <p className="text-3xl font-bold mb-4">{header}</p>
-      {body.map((text, i) => (
-        <p key={header} className="text-xl mb-2">{text}</p>
-      ))}
+    <div ref={containerRef}>
+      <div
+        className="bg-neu neuShadowOut rounded-xl h-96 p-6"
+        ref={cardRef}
+        style={{
+          transform: 'perspective(5000px) rotateX(0) rotateY(0)',
+        }}
+      >
+        <p className="text-3xl font-bold mb-4">{header}</p>
+        {body.map((text, i) => (
+          <p key={header} className="text-xl mb-2">{text}</p>
+        ))}
+      </div>
     </div>
   );
 };
