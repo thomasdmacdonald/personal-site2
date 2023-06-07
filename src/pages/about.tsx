@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { type NextPage } from 'next';
 import PageHeader from '~/components/text/PageHeader';
+import LogoAvatar from '~/components/display/logoAvatar';
 
 const aboutBlurb = [
   'Being a software developer is the perfect way of satisfying my love for creating efficient and elegant systems, as well as getting to see real people use those systems in their everyday life.',
@@ -75,8 +76,9 @@ function skewCard(
 interface AboutSectionProps {
   header: string,
   body: string[],
+  logos: string[],
 }
-const AboutSection : React.FC<AboutSectionProps> = ({ header, body }) => {
+const AboutSection : React.FC<AboutSectionProps> = ({ header, body, logos }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const handleCardMove = (e: MouseEvent) => skewCard(e, cardRef, containerRef);
@@ -90,14 +92,21 @@ const AboutSection : React.FC<AboutSectionProps> = ({ header, body }) => {
   return (
     <div ref={containerRef}>
       <div
-        className="bg-neu neuShadowOut rounded-xl h-96 p-6"
+        className="bg-neu neuShadowIn rounded-xl h-96 p-6"
         ref={cardRef}
         style={{
           transform: 'perspective(5000px) rotateX(0) rotateY(0)',
         }}
       >
-        <p className="text-3xl font-bold mb-4">{header}</p>
-        {body.map((text, i) => (
+        <div className="flex flex-row items-center flex-wrap">
+          <p className="text-3xl font-bold mr-4 mb-4">{header}</p>
+          <div className="flex flex-row mb-4">
+            {
+              logos.map((logo) => <LogoAvatar key={logo} logo={logo} />)
+            }
+          </div>
+        </div>
+        {body.map((text) => (
           <p key={header} className="text-xl mb-2">{text}</p>
         ))}
       </div>
@@ -108,22 +117,27 @@ const gridData = [
   {
     header: 'Frontend',
     body: frontendBlurb,
+    logos: ['react', 'typescript', 'mui'],
   },
   {
     header: 'Backend',
     body: backendBlurb,
+    logos: ['python', 'flask'],
   },
   {
     header: 'Databases',
     body: databaseBlurb,
+    logos: ['postgre', 'dynamodb', 's3'],
   },
   {
     header: 'Machine Learning',
     body: mlBlurb,
+    logos: [],
   },
   {
     header: 'Dev ops',
     body: devopsBlurb,
+    logos: ['aws'],
   },
 ];
 
@@ -134,8 +148,8 @@ const About: NextPage = () => (
       <p key={i} className="text-lg mb-2">{text}</p>
     ))}
     <div className="grid sm:grid-cols-1 md:grid-cols-2 lg-grid-cols-3 xl:grid-cols-3 gap-10 mt-8">
-      {gridData.map(({ header, body }) => (
-        <AboutSection key={header} header={header} body={body} />
+      {gridData.map(({ header, body, logos }) => (
+        <AboutSection key={header} header={header} body={body} logos={logos} />
       ))}
     </div>
   </div>
