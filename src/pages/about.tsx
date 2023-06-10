@@ -142,8 +142,8 @@ const gridData = [
 ];
 
 const About: NextPage = () => (
-  <div style={{ marginLeft: '10%' }} className="w-4/5 pt-20 mb-20">
-    <PageHeader className="mb-8">About</PageHeader>
+  <div style={{ marginLeft: '10%' }} className="w-4/5 pt-28 mb-20">
+    <PageHeader>About</PageHeader>
     {aboutBlurb.map((text, i) => (
       <p key={i} className="text-lg mb-2">{text}</p>
     ))}

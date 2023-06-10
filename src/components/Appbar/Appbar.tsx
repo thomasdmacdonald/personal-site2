@@ -29,7 +29,7 @@ const pages = [
 
 const Appbar: React.FC = () => (
   <div className="w-full flex justify-center absolute top-0 left-0 z-40">
-    <div className="bg-neu flex flex-row px-1 py-4 rounded-b-xl">
+    <div className="bg-neu flex flex-row px-1 py-4 rounded-b-xl neuShadowIn">
       {pages.map(({ icon, route }) => (
         <MenuButton key={route} Icon={icon} route={route} />
       ))}
