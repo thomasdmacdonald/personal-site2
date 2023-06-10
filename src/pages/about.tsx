@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { type NextPage } from 'next';
 import PageHeader from '~/components/text/PageHeader';
-import LogoAvatar from '~/components/display/logoAvatar';
+import LogoAvatar from '~/components/display/LogoAvatar';
 
 const aboutBlurb = [
   'Being a software developer is the perfect way of satisfying my love for creating efficient and elegant systems, as well as getting to see real people use those systems in their everyday life.',
