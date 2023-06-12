@@ -1,10 +1,10 @@
 import React from 'react';
 import { type AppType } from 'next/app';
 
-import { api } from '~/utils/api';
+import Appbar from 'src/components/appbar/Appbar';
+import { api } from 'src/utils/api';
 
-import '~/styles/globals.css';
-import Appbar from '~/components/appbar/Appbar';
+import 'src/styles/globals.css';
 
 const MyApp: AppType = ({ Component, pageProps }) => (
   <>
