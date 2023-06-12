@@ -34,18 +34,18 @@ const WorkSection : React.FC<SectionProps> = ({
 const workData = [
   {
     about: [
-      'Built and expanded our core product web app, a React based analytics dashboard and recommendation tool for allocating digital ad spend. \
-      Owned multiple pages and features, using Material UI and CSS for styling, and react-vis for data visualization. Features include log in/sign \
-      up pages, new customer orientation flows, data analytics dashboards, file upload features, and recommendation generators. \
-      Used AWS Cognito to handle user authentication and to manage userpools between clients. \
-      Created REST endpoints with Flask to send data to the frontend, using Redux to store and manage state across the app. \
-      Tested frontend (Cypress) and backend (Pytest) code with unit and integration tests to ensure code quality.',
-      'The features and pages I created are used every day by customers, and were shown to investors to secure rounds of funding. \
-      Created a microservice to collect users’ authentication information for advertising services, to allow for automated data fetching. \
-      Interfaced with 10+ public APIs to create frontend and backend authentication flows, using React and Flask. \
-      Created an API Gateway with Flask to handle responses from these APIs, and added measures to protect against malicious requests. \
-      Stored user credentials securely in DynamoDB, and wrote Python scripts to validate credential status to prevent missing data. \
-      Reduced client correspondence time by 30% and aided future automated processes by getting data access programmatically.',
+      'Built and expanded our core product web app, a React based analytics dashboard and recommendation tool for allocating digital ad spend.'
+      + 'Owned multiple pages and features, using Material UI and CSS for styling, and react-vis for data visualization. Features include log in/sign'
+      + 'up pages, new customer orientation flows, data analytics dashboards, file upload features, and recommendation generators.'
+      + 'Used AWS Cognito to handle user authentication and to manage userpools between clients.'
+      + 'Created REST endpoints with Flask to send data to the frontend, using Redux to store and manage state across the app.'
+      + 'Tested frontend (Cypress) and backend (Pytest) code with unit and integration tests to ensure code quality.',
+      'The features and pages I created are used every day by customers, and were shown to investors to secure rounds of funding.'
+      + 'Created a microservice to collect users’ authentication information for advertising services, to allow for automated data fetching.'
+      + 'Interfaced with 10+ public APIs to create frontend and backend authentication flows, using React and Flask.'
+      + 'Created an API Gateway with Flask to handle responses from these APIs, and added measures to protect against malicious requests.'
+      + 'Stored user credentials securely in DynamoDB, and wrote Python scripts to validate credential status to prevent missing data.'
+      + 'Reduced client correspondence time by 30% and aided future automated processes by getting data access programmatically.',
     ],
     title: 'Software Engineer',
     company: 'OutPoint',
@@ -54,18 +54,18 @@ const workData = [
   },
   {
     about: [
-      'Built and expanded our core product web app, a React based analytics dashboard and recommendation tool for allocating digital ad spend. \
-      Owned multiple pages and features, using Material UI and CSS for styling, and react-vis for data visualization. Features include log in/sign \
-      up pages, new customer orientation flows, data analytics dashboards, file upload features, and recommendation generators. \
-      Used AWS Cognito to handle user authentication and to manage userpools between clients. \
-      Created REST endpoints with Flask to send data to the frontend, using Redux to store and manage state across the app. \
-      Tested frontend (Cypress) and backend (Pytest) code with unit and integration tests to ensure code quality.',
-      'The features and pages I created are used every day by customers, and were shown to investors to secure rounds of funding. \
-      Created a microservice to collect users’ authentication information for advertising services, to allow for automated data fetching. \
-      Interfaced with 10+ public APIs to create frontend and backend authentication flows, using React and Flask. \
-      Created an API Gateway with Flask to handle responses from these APIs, and added measures to protect against malicious requests. \
-      Stored user credentials securely in DynamoDB, and wrote Python scripts to validate credential status to prevent missing data. \
-      Reduced client correspondence time by 30% and aided future automated processes by getting data access programmatically.',
+      'Built and expanded our core product web app, a React based analytics dashboard and recommendation tool for allocating digital ad spend.'
+      + 'Owned multiple pages and features, using Material UI and CSS for styling, and react-vis for data visualization. Features include log in/sign'
+      + 'up pages, new customer orientation flows, data analytics dashboards, file upload features, and recommendation generators.'
+      + 'Used AWS Cognito to handle user authentication and to manage userpools between clients.'
+      + 'Created REST endpoints with Flask to send data to the frontend, using Redux to store and manage state across the app.'
+      + 'Tested frontend (Cypress) and backend (Pytest) code with unit and integration tests to ensure code quality.',
+      'The features and pages I created are used every day by customers, and were shown to investors to secure rounds of funding.'
+      + 'Created a microservice to collect users’ authentication information for advertising services, to allow for automated data fetching.'
+      + 'Interfaced with 10+ public APIs to create frontend and backend authentication flows, using React and Flask.'
+      + 'Created an API Gateway with Flask to handle responses from these APIs, and added measures to protect against malicious requests.'
+      + 'Stored user credentials securely in DynamoDB, and wrote Python scripts to validate credential status to prevent missing data.'
+      + 'Reduced client correspondence time by 30% and aided future automated processes by getting data access programmatically.',
     ],
     title: 'Frontend Developer',
     company: 'Centivizer',

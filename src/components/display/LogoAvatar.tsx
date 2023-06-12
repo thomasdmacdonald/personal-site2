@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 
 import aws from 'src/assets/images/tech_logos/aws.png';
 import dynamodb from 'src/assets/images/tech_logos/dynamodb.png';
@@ -15,22 +15,31 @@ interface Props {
   logo: string
 }
 
-const images = {
-  aws,
-  dynamodb,
-  flask,
-  mui,
-  postgre,
-  python,
-  react,
-  s3,
-  typescript,
-};
+const images = new Map<string, StaticImageData>([
+  ['aws', aws],
+  ['dynamodb', dynamodb],
+  ['flask', flask],
+  ['mui', mui],
+  ['postgre', postgre],
+  ['python', python],
+  ['react', react],
+  ['s3', s3],
+  ['typescript', typescript],
+]);
 
-const LogoAvatar: React.FC<Props> = ({ logo }) => (
-  <div className="flex items-center justify-center h-12 w-12 neuShadowOut bg-red rounded-full mr-4">
-    <Image src={images[logo]} alt={`Logo for ${logo}`} className="h-8 w-8" />
-  </div>
-);
+const LogoAvatar: React.FC<Props> = ({ logo }) => {
+  const img = images.get(logo);
+  if (!img) {
+    return (
+      <div className="flex items-center justify-center h-12 w-12 neuShadowOut bg-red rounded-full mr-4" />
+    );
+  }
+
+  return (
+    <div className="flex items-center justify-center h-12 w-12 neuShadowOut bg-red rounded-full mr-4">
+      <Image src={img} alt={`Logo for ${logo}`} className="h-8 w-8" />
+    </div>
+  );
+};
 
 export default LogoAvatar;

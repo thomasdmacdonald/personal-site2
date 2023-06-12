@@ -35,6 +35,7 @@ const config = {
     'react/require-default-props': 'off',
     'jsx-a11y/click-events-have-key-events': 'warn',
     'react/jsx-props-no-spreading': 'off',
+    'no-param-reassign': 'warn',
   },
 };
 
