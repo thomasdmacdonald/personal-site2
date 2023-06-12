@@ -6,7 +6,7 @@ import { api } from 'src/utils/api';
 
 import 'src/styles/globals.css';
 
-const MyApp: AppType = ({ Component, pageProps }) => (
+const MyApp: AppType = ({ Component, pageProps }) => ( // eslint-disable-line
   <>
     <Appbar />
     <Component {...pageProps} />
