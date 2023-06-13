@@ -22,8 +22,8 @@ const MenuButton: React.FC<Props> = ({ Icon, route }) => {
       onClick={() => router.push(route)}
     >
       <div className="relative">
-        <Icon className={`h-6 w-6 ${active ? 'text-primary' : 'text-stone-900'} group-hover:text-primary group-focus:text-primary`} />
-        <Icon className={`absolute opacity-0 top-0 left-0 h-6 w-6 ${active ? 'text-primary' : 'text-stone-900'} group-hover:text-primary group-hover:textGlow group-focus:text-primary group-focus:textGlow`} />
+        <Icon className={`h-6 w-6 ${active ? 'text-primary' : 'text-stone-700'} group-hover:text-primary group-focus:text-primary`} />
+        <Icon className={`absolute opacity-0 top-0 left-0 h-6 w-6 ${active ? 'text-primary' : 'text-stone-700'} group-hover:text-primary group-hover:textGlow group-focus:text-primary group-focus:textGlow`} />
       </div>
     </div>
   );

@@ -1,8 +1,10 @@
 import { type NextPage } from 'next';
 import React, { useState } from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 
 import Toggle from '~/components/buttons/Toggle';
+import headshot from '~/assets/images/headshot2.png';
 
 const Home: NextPage = () => {
   const [colorOn, setColorOn] = useState(false);
@@ -19,9 +21,11 @@ const Home: NextPage = () => {
         <div style={{ top: '40%' }} className="h-3/5 w-full bg-gradient-to-r from-red-500 to-orange-500 z-0 absolute left-0" />
 
         <div
-          style={{ top: 'calc(40% - 7.5rem)', right: '20%' }}
-          className="invisible lg:visible absolute h-60 w-60 bg-neu rounded-full z-20 neuShadowIn"
-        />
+          style={{ top: 'calc(40% - 10rem)', right: '15%' }}
+          className="invisible lg:visible absolute h-80 w-80 bg-neu rounded-full z-20 neuShadowIn"
+        >
+          <Image src={headshot} alt="Personal headshot" className="rounded-full" />
+        </div>
 
         <div className="flex flex-col-reverse px-10 md:px-20 h-2/5 bg-gradient-to-r from-red-500 to-orange-500 rounded-bl-3xl z-10">
           <p className="text-5xl md:text-8xl text-neu font-bold">Thomas</p>

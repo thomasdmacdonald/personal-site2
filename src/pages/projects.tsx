@@ -20,7 +20,7 @@ interface Props {
 const ProjectSection : React.FC<Props> = ({
   images, width, name, title, body, reverse,
 }) => (
-  <div className={`flex flex-col mb-10 ${reverse ? 'justify-end md:flex-row-reverse' : 'justify-start md:flex-row'}`}>
+  <div className={`flex flex-col mb-10 ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
     <div className="mr-8 mb-6">
       <Carousel images={images} width={width} />
     </div>
