@@ -2,6 +2,23 @@ import React from 'react';
 import { type NextPage } from 'next';
 import PageHeader from '~/components/text/PageHeader';
 
+interface TitleProps {
+  date: string,
+  company: string,
+  title: string,
+  className: string
+}
+
+const WorkTitle : React.FC<TitleProps> = ({
+  date, company, title, className,
+}) => (
+  <div className={`flex flex-col ${className}`}>
+    <div className="mr-8 mt-1 mb-4 w-44 h-12 text-sm font-bold neuShadowIn rounded-full relative flex flex-shrink-0 justify-center items-center">{date}</div>
+    <p className="pr-10 text-left lg:text-right text-xl font-bold">{company}</p>
+    <p className="pr-10 text-left lg:text-right text-md font-bold mb-4">{title}</p>
+  </div>
+);
+
 interface SectionProps {
   first?: boolean
   last?: boolean
@@ -14,12 +31,9 @@ const WorkSection : React.FC<SectionProps> = ({
   company, title, date, about, first, last,
 }) => (
   <div className="flex flex-row">
-    <div className="flex flex-col">
-      <div className="mr-8 mt-1 mb-4 w-44 h-12 text-sm font-bold neuShadowIn rounded-full relative flex flex-shrink-0 justify-center items-center">{date}</div>
-      <p className="pr-10 text-right text-xl font-bold">{company}</p>
-      <p className="pr-10 text-right text-md font-bold mb-4">{title}</p>
-    </div>
+    <WorkTitle company={company} date={date} title={title} className="invisible absolute lg:relative lg:visible" />
     <div className="relative pl-8 pb-10 flex grow flex-col">
+      <WorkTitle company={company} date={date} title={title} className="visible relative lg:absolute lg:invisible" />
       <div className={`absolute top-0 left-0 w-2 h-full bg-primary${first ? ' rounded-t-full' : ''}${last ? ' rounded-b-full' : ''}`} />
       <div className="absolute top-4 -left-2 rounded-full h-6 w-6 bg-neu neuShadowIn border-2 border-primary" />
       <div className="neuShadowOut p-4 mt-1 rounded-lg flex flex-col">

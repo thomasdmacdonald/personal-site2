@@ -19,14 +19,11 @@ interface Props {
 
 const ProjectSection : React.FC<Props> = ({
   images, width, name, title, body, reverse,
-}) => {
-  const carousel = (
-    <div className="mr-8">
+}) => (
+  <div className={`flex flex-col mb-10 ${reverse ? 'justify-end md:flex-row-reverse' : 'justify-start md:flex-row'}`}>
+    <div className="mr-8 mb-6">
       <Carousel images={images} width={width} />
     </div>
-  );
-
-  const blurb = (
     <div className="mr-8">
       <p className="text-3xl font-bold">{name}</p>
       <p className="text-lg font-bold mb-6">{title}</p>
@@ -34,13 +31,8 @@ const ProjectSection : React.FC<Props> = ({
         <p>{text}</p>
       ))}
     </div>
-  );
-  return (
-    <div className={`flex flex-row mb-16 ${reverse ? 'justify-end' : 'justify-start'}`}>
-      {reverse ? [blurb, carousel] : [carousel, blurb]}
-    </div>
-  );
-};
+  </div>
+);
 
 const projectData = [
   {

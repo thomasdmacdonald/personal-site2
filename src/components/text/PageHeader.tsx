@@ -6,7 +6,7 @@ interface Props {
 }
 
 const PageHeader: React.FC<PropsWithChildren<Props>> = ({ children, className = '', style = {} }) => (
-  <p className={`text-6xl text-bold mb-8 ${className}}`} style={style}>{children}</p>
+  <p className={`text-4xl md:text-6xl text-bold mb-8 ${className}}`} style={style}>{children}</p>
 );
 
 export default PageHeader;
