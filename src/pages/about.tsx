@@ -87,7 +87,7 @@ const databaseBlurb = [
 const mlBlurb = [
   <>
     I loved AI before it was cool (ok, maybe not),
-    but I have xperience with ML and data engineering projects
+    but I have experience with ML and data engineering projects
     using frameworks like
     {' '}
     <BoldText>Scikit Learn</BoldText>
@@ -180,11 +180,12 @@ const AboutSection : React.FC<AboutSectionProps> = ({ header, body, logos }) => 
   }, []);
 
   return (
-    <div ref={containerRef}>
+    <div ref={containerRef} className="flex flex-col flex-grow">
       <div
-        className="bg-neu neuShadowIn rounded-xl h-96 p-6"
+        className="flex flex-col flex-grow bg-neu neuShadowIn rounded-xl p-6"
         ref={cardRef}
         style={{
+          minHeight: '25rem',
           transform: 'perspective(5000px) rotateX(0) rotateY(0)',
         }}
       >
@@ -222,7 +223,7 @@ const gridData = [
   {
     header: 'Machine Learning',
     body: mlBlurb,
-    logos: [],
+    logos: ['pytorch', 'sklearn'],
   },
   {
     header: 'Dev Ops',
