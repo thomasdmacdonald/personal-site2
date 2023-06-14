@@ -1,5 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import { type NextPage } from 'next';
+import {
+  AcademicCapIcon,
+} from '@heroicons/react/24/solid';
+
 import PageHeader from '~/components/text/PageHeader';
 import LogoAvatar from '~/components/display/LogoAvatar';
 import BoldText from '~/components/text/BoldText';
@@ -234,7 +238,20 @@ const gridData = [
 
 const About: NextPage = () => (
   <div style={{ marginLeft: '10%' }} className="w-4/5 pt-28 mb-20">
-    <PageHeader>About</PageHeader>
+    <div className="flex flex-col md:flex-row justify-between">
+      <PageHeader>About</PageHeader>
+      <div className="rounded-full neuShadowOut flex flex-row items-center py-2 pr-12 pl-12 sm:pl-2 mb-8">
+        <div className="rounded-full neuShadowIn p-2 mr-2 invisible absolute sm:visible sm:relative">
+          <AcademicCapIcon className="h-16" />
+        </div>
+        <div>
+          <p className="text-lg font-bold">University of Toronto</p>
+          <p className="text-sm font-bold">2017-2021, High Distinction</p>
+          <p className="text-sm text-stone-700">Computer Science Specialist</p>
+          <p className="text-sm text-stone-700">Statistics Minor</p>
+        </div>
+      </div>
+    </div>
     {aboutBlurb.map((text, i) => (
       <p key={i} className="text-lg mb-4">{text}</p>
     ))}
