@@ -24,7 +24,7 @@ const Home: NextPage = () => {
           style={{ top: 'calc(40% - 10rem)', right: '15%' }}
           className="invisible lg:visible absolute h-80 w-80 bg-neu rounded-full z-20 neuShadowIn"
         >
-          <Image src={headshot} alt="Personal headshot" className="rounded-full" />
+          <Image src={headshot} alt="Personal headshot" className={`rounded-full transition-all duration-1000 ease-in-out ${colorOn ? 'opacity-100' : 'opacity-0'}`} />
         </div>
 
         <div className="flex flex-col-reverse px-10 md:px-20 h-2/5 bg-gradient-to-r from-red-500 to-orange-500 rounded-bl-3xl z-10">
