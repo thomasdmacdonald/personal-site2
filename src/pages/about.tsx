@@ -1,32 +1,126 @@
 import React, { useEffect, useRef } from 'react';
 import { type NextPage } from 'next';
+import {
+  AcademicCapIcon,
+} from '@heroicons/react/24/solid';
+
 import PageHeader from '~/components/text/PageHeader';
 import LogoAvatar from '~/components/display/LogoAvatar';
+import BoldText from '~/components/text/BoldText';
 
 const aboutBlurb = [
-  'Being a software developer is the perfect way of satisfying my love for creating efficient and elegant systems, as well as getting to see real people use those systems in their everyday life.',
-  "From my time working at start ups, I've learned to balance writing well-engineered and beautiful code with shipping fast and getting @$!% done.",
-  "I love taking products from the drawing board and putting them in to users' hands, and am always working to improve my knowledge, speed, and skill while developing.",
+  <>
+    With years experience working in fast-paced startup environments,
+    I&apos;ve learned to balance my love for writing efficient and well-engineered systems,
+    with knowing when to move fast and get
+    {' '}
+    <BoldText>@!#%</BoldText>
+    {' '}
+    done.
+    I love taking products from the drawing board to users&apos; hands,
+    and am always working to improve my knowledge, speed, skill, and discretion while developing.
+  </>,
+  "Here are some of the skills I've devloped on my journey as a software engineer:",
 ];
 
 const frontendBlurb = [
-  'React is my go-to tool for creating responsive and functional web apps quickly and efficiently. I\'m proficient in HTML and CSS, and have used Material UI, Tailwind, and Boostrap for styling.',
+  <>
+    <BoldText>React</BoldText>
+    {' '}
+    is my go-to tool for creating responsive and functional web apps quickly and efficiently.
+    I&apos;m proficient in
+    {' '}
+    <BoldText>HTML</BoldText>
+    {' '}
+    and
+    {' '}
+    <BoldText>CSS</BoldText>
+    ,
+    and have used
+    {' '}
+    <BoldText>Material UI</BoldText>
+    ,
+    {' '}
+    <BoldText>Tailwind</BoldText>
+    , and
+    {' '}
+    <BoldText>Boostrap</BoldText>
+    {' '}
+    for styling.
+  </>,
 ];
 
 const backendBlurb = [
-  'I have experience working on monolith and microservice backends in frameworks like Flask and Express, ',
+  <>
+    I&apos;ve worked on both monolith and microservice backends,
+    mainly creating and maintaining
+    {' '}
+    <BoldText>REST apis</BoldText>
+    . I have professional experience with
+    {' '}
+    <BoldText>Flask</BoldText>
+    ,
+    as well as personal experience with
+    {' '}
+    <BoldText>Node.js</BoldText>
+    {' '}
+    and
+    {' '}
+    <BoldText>Express</BoldText>
+    .
+  </>,
 ];
 
 const databaseBlurb = [
-  'I\'m familiar with writing queries for traditional SQL databases like Postgres, as well as working with noSQL options like dynamodb, or even raw file stores like S3.',
+  <>
+    Whether writing queries for traditional SQL databases like
+    {' '}
+    <BoldText>PostgreSQL</BoldText>
+    ,
+    working with noSQL options like
+    {' '}
+    <BoldText>DynamoDB</BoldText>
+    , or even using raw file stores like
+    {' '}
+    <BoldText>S3</BoldText>
+    ,
+    I&apos;m comfortable with most database options.
+  </>,
 ];
 
 const mlBlurb = [
-  'I loved machine learning before it was cool (ok, maybe not), and have experience with data engineering projects as well as with frameworks liek Scikit Learn and PyTorch. Through my degree from UofT, I have advanced stats and calc knowledge, and have taken a wide range of ML courses.',
+  <>
+    I loved AI before it was cool (ok, maybe not),
+    but I have experience with ML and data engineering projects
+    using frameworks like
+    {' '}
+    <BoldText>Scikit Learn</BoldText>
+    {' '}
+    and
+    {' '}
+    <BoldText>PyTorch</BoldText>
+    .
+    With a minor in
+    {' '}
+    <BoldText>statistics</BoldText>
+    {' '}
+    from UofT, I have
+    both theoretical and practical knowledge of classical AI and deep learning alike.
+  </>,
 ];
 
 const devopsBlurb = [
-  'I\'ve worked with a wide range of cloud services, from deploying and hosting servers, creating and deploying cloud functions, managing user pools, creating and managing databases, working on CI/CD pipelines.',
+  <>
+    I&apos;ve worked with a wide range of cloud services on
+    {' '}
+    <BoldText>AWS</BoldText>
+    ,
+    from deploying and hosting servers,
+    to creating and deploying cloud functions,
+    managing user pools,
+    creating and managing databases,
+    working on CI/CD pipelines, and much more.
+  </>,
 ];
 
 const SKEW_DEGS = 15;
@@ -75,7 +169,7 @@ function skewCard(
 
 interface AboutSectionProps {
   header: string,
-  body: string[],
+  body: (string | React.JSX.Element)[],
   logos: string[],
 }
 const AboutSection : React.FC<AboutSectionProps> = ({ header, body, logos }) => {
@@ -90,11 +184,12 @@ const AboutSection : React.FC<AboutSectionProps> = ({ header, body, logos }) => 
   }, []);
 
   return (
-    <div ref={containerRef}>
+    <div ref={containerRef} className="flex flex-col flex-grow">
       <div
-        className="bg-neu neuShadowIn rounded-xl h-96 p-6"
+        className="flex flex-col flex-grow bg-neu neuShadowIn rounded-xl p-6"
         ref={cardRef}
         style={{
+          minHeight: '25rem',
           transform: 'perspective(5000px) rotateX(0) rotateY(0)',
         }}
       >
@@ -132,10 +227,10 @@ const gridData = [
   {
     header: 'Machine Learning',
     body: mlBlurb,
-    logos: [],
+    logos: ['pytorch', 'sklearn'],
   },
   {
-    header: 'Dev ops',
+    header: 'Dev Ops',
     body: devopsBlurb,
     logos: ['aws'],
   },
@@ -143,9 +238,22 @@ const gridData = [
 
 const About: NextPage = () => (
   <div style={{ marginLeft: '10%' }} className="w-4/5 pt-28 mb-20">
-    <PageHeader>About</PageHeader>
+    <div className="flex flex-col md:flex-row justify-between">
+      <PageHeader>About</PageHeader>
+      <div className="rounded-full neuShadowOut flex flex-row items-center py-2 pr-12 pl-12 sm:pl-2 mb-8">
+        <div className="rounded-full neuShadowIn p-2 mr-2 invisible absolute sm:visible sm:relative">
+          <AcademicCapIcon className="h-16" />
+        </div>
+        <div>
+          <p className="text-lg font-bold">University of Toronto</p>
+          <p className="text-sm font-bold">2017-2021, High Distinction</p>
+          <p className="text-sm text-stone-700">Computer Science Specialist</p>
+          <p className="text-sm text-stone-700">Statistics Minor</p>
+        </div>
+      </div>
+    </div>
     {aboutBlurb.map((text, i) => (
-      <p key={i} className="text-lg mb-2">{text}</p>
+      <p key={i} className="text-lg mb-4">{text}</p>
     ))}
     <div className="grid sm:grid-cols-1 md:grid-cols-2 lg-grid-cols-3 xl:grid-cols-3 gap-10 mt-8">
       {gridData.map(({ header, body, logos }) => (

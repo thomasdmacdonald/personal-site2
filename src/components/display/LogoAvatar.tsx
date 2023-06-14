@@ -10,6 +10,8 @@ import python from 'src/assets/images/tech_logos/python.png';
 import react from 'src/assets/images/tech_logos/react.png';
 import s3 from 'src/assets/images/tech_logos/s3.png';
 import typescript from 'src/assets/images/tech_logos/typescript.png';
+import pytorch from 'src/assets/images/tech_logos/pytorch.png';
+import sklearn from 'src/assets/images/tech_logos/sklearn.png';
 
 interface Props {
   logo: string
@@ -25,6 +27,8 @@ const images = new Map<string, StaticImageData>([
   ['react', react],
   ['s3', s3],
   ['typescript', typescript],
+  ['pytorch', pytorch],
+  ['sklearn', sklearn],
 ]);
 
 const LogoAvatar: React.FC<Props> = ({ logo }) => {
