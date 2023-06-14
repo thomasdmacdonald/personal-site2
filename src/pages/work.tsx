@@ -158,7 +158,7 @@ const workData = [
     ],
     title: 'Software Engineer',
     company: 'OutPoint',
-    date: '07/2023 - 06/2023',
+    date: '07/2021 - 06/2023',
   },
   {
     about: [
@@ -196,7 +196,7 @@ const workData = [
     ],
     title: 'Frontend Developer',
     company: 'Centivizer',
-    date: '05/2021 - 09/2021',
+    date: '05/2020 - 09/2020',
   },
   {
     about: [
@@ -213,7 +213,7 @@ const workData = [
     ],
     title: 'Web Developer',
     company: 'Centivizer',
-    date: '05/2020 - 09/2020',
+    date: '05/2019 - 09/2019',
     last: true,
   },
 ];
