@@ -33,7 +33,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>tomi.dev</title>
+        <title>its tomi!</title>
         <meta name="Home page" content="Home page for portfolio website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
