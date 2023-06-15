@@ -10,7 +10,7 @@ const pages = [
     route: '/',
   },
   {
-    icon: HeartIcon,
+    icon: UserIcon,
     route: '/about',
   },
   {
@@ -22,7 +22,7 @@ const pages = [
     route: '/projects',
   },
   {
-    icon: UserIcon,
+    icon: HeartIcon,
     route: '/contact',
   },
 ];
