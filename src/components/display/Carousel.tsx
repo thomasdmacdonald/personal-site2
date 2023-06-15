@@ -13,7 +13,7 @@ const Carousel : React.FC<Props> = ({ images, width }) => {
   const [imageCount, setImageCount] = useState(0);
 
   return (
-    <div className="overflow-hidden relative neuShadowOut rounded-lg" style={{ width }}>
+    <div className="overflow-hidden relative neuShadowOut rounded-lg" style={{ maxWidth: '100%', width }}>
       <div className="absolute inset-0 flex items-center justify-between p-4 z-50">
         {imageCount === 0 ? <div /> : (
           <button
@@ -47,7 +47,7 @@ const Carousel : React.FC<Props> = ({ images, width }) => {
         className="flex transition-transform duration-500 ease-out"
         style={{ transform: `translateX(-${imageCount * 100}%)` }}
       >
-        {images.map((image) => <Image src={image} style={{ width }} alt="Image for project" />)}
+        {images.map((image) => <Image src={image} style={{ maxWidth: '100%', width }} alt="Image for project" />)}
       </div>
     </div>
   );

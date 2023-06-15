@@ -242,7 +242,7 @@ const About: NextPage = () => (
       <PageHeader>About</PageHeader>
       <div className="rounded-full neuShadowOut flex flex-row items-center py-2 pr-12 pl-12 sm:pl-2 mb-8">
         <div className="rounded-full neuShadowIn p-2 mr-2 invisible absolute sm:visible sm:relative">
-          <AcademicCapIcon className="h-16" />
+          <AcademicCapIcon className="h-16 text-stone-600" />
         </div>
         <div>
           <p className="text-lg font-bold">University of Toronto</p>

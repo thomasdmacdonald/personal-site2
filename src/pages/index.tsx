@@ -1,13 +1,34 @@
 import { type NextPage } from 'next';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
+import TypewriterComponent, { type TypewriterClass } from 'typewriter-effect';
 
 import Toggle from '~/components/buttons/Toggle';
 import headshot from '~/assets/images/headshot2.png';
 
+const typewriterStrings = [
+  'Software Engineer',
+  'Web Developer',
+  'Stack Overflow Expert',
+  'Vim God',
+  '10x Engineer',
+];
+
+function applyTypewriter(typewriter: TypewriterClass, curr: number, strings: string[]) : void {
+  typewriter.typeString(strings[curr] || '').pauseFor(2000).deleteAll().pauseFor(500);
+  if (curr >= strings.length) return;
+  applyTypewriter(typewriter, curr + 1, strings);
+}
+
 const Home: NextPage = () => {
   const [colorOn, setColorOn] = useState(false);
+  const [typeWriter, setTypewriter] = useState<TypewriterClass>();
+
+  useEffect(() => {
+    if (colorOn) typeWriter?.start();
+    else typeWriter?.stop();
+  }, [colorOn, typeWriter]);
 
   return (
     <>
@@ -34,7 +55,23 @@ const Home: NextPage = () => {
         <div className="px-10 md:px-20 h-3/5 bg-neu rounded-tr-3xl z-10">
           <p className={`${colorOn ? 'text-primary' : 'text-neu'} text-5xl md:text-8xl font-bold textShadowOut transitionSlow`}>MacDonald</p>
           <div className="h-20" />
+          <p className="text-lg text-stone-700 font-bold mb-2">I am a . . .</p>
           <Toggle active={colorOn} setActive={setColorOn} />
+          <div className="flex justify-end items-center sm:items-end mt-16 md:mt-24" style={{ marginRight: '5%' }}>
+            <p className="text-3xl sm:text-5xl font-bold text-primary">&lt;&gt;</p>
+            <TypewriterComponent
+              onInit={(typewriter) => {
+                setTypewriter(typewriter);
+                applyTypewriter(typewriter, 0, typewriterStrings);
+              }}
+              options={{
+                wrapperClassName: 'text-3xl sm:text-5xl text-stone-800',
+                cursorClassName: `${'Typewriter__cursor'} text-3xl sm:text-5xl text-primary`,
+                loop: true,
+              }}
+            />
+            <p className="text-3xl sm:text-5xl font-bold text-primary">&lt;/&gt;</p>
+          </div>
         </div>
       </main>
     </>
