@@ -48,7 +48,7 @@ const projectData = [
     width: '500px',
     name: 'This website!',
     title: 'A personal portfolio website made with Next.js',
-    github: 'https://github.com/language-thing-ruhacks-2019',
+    github: 'https://github.com/thomasdmacdonald/personal-site2',
     body: [
       <>
         This site is made with ❤️ using
@@ -89,7 +89,7 @@ const projectData = [
     width: '400px',
     name: 'Polyglot',
     title: 'A Google Assistant app for language learning',
-    github: 'https://github.com/thomasdmacdonald/personal-site2',
+    github: 'https://github.com/language-thing-ruhacks-2019',
     body: [
       <>
         With the app, you can ask your
