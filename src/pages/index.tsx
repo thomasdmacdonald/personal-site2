@@ -55,10 +55,8 @@ const Home: NextPage = () => {
         <div className="px-10 md:px-20 h-3/5 bg-neu rounded-tr-3xl z-10">
           <p className={`${colorOn ? 'text-primary' : 'text-neu'} text-5xl md:text-8xl font-bold textShadowOut transitionSlow`}>MacDonald</p>
           <div className="h-20" />
-          <div className="pl-8">
-            <p className="text-lg text-stone-700 font-bold mb-2">I am a . . .</p>
-            <Toggle active={colorOn} setActive={setColorOn} />
-          </div>
+          <p className="text-lg text-stone-700 font-bold mb-2">I am a . . .</p>
+          <Toggle active={colorOn} setActive={setColorOn} />
           <div className="flex justify-end items-center sm:items-end mt-16 md:mt-24" style={{ marginRight: '5%' }}>
             <p className="text-3xl sm:text-5xl font-bold text-primary">&lt;&gt;</p>
             <TypewriterComponent
