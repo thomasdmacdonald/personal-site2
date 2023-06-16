@@ -8,6 +8,7 @@ import korean1 from 'src/assets/images/project_photos/korean (1).jpg';
 import korean2 from 'src/assets/images/project_photos/korean (2).png';
 
 import { type StaticImageData } from 'next/image';
+import Head from 'next/head';
 import PageHeader from '~/components/text/PageHeader';
 import Carousel from '~/components/display/Carousel';
 import BoldText from '~/components/text/BoldText';
@@ -176,22 +177,29 @@ const projectData = [
 ];
 
 const Projects: NextPage = () => (
-  <div style={{ marginLeft: '10%' }} className="w-4/5 pt-28 mb-20">
-    <PageHeader>Projects</PageHeader>
-    {projectData.map(({
-      images, width, name, title, body, reverse, github,
-    }) => (
-      <ProjectSection
-        images={images}
-        width={width}
-        name={name}
-        title={title}
-        body={body}
-        reverse={reverse}
-        github={github}
-      />
-    ))}
-  </div>
+  <>
+    <Head>
+      <title>Projects</title>
+      <meta name="Projects page" content="Projects page for portfolio website" />
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
+    <main style={{ marginLeft: '10%' }} className="w-4/5 pt-28 mb-20">
+      <PageHeader>Projects</PageHeader>
+      {projectData.map(({
+        images, width, name, title, body, reverse, github,
+      }) => (
+        <ProjectSection
+          images={images}
+          width={width}
+          name={name}
+          title={title}
+          body={body}
+          reverse={reverse}
+          github={github}
+        />
+      ))}
+    </main>
+  </>
 );
 
 export default Projects;

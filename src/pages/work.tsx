@@ -1,5 +1,6 @@
 import React from 'react';
 import { type NextPage } from 'next';
+import Head from 'next/head';
 import PageHeader from '~/components/text/PageHeader';
 import BoldText from '~/components/text/BoldText';
 
@@ -219,9 +220,15 @@ const workData = [
 ];
 
 const Work: NextPage = () => (
-  <div style={{ marginLeft: '10%' }} className="w-4/5 pt-28 mb-20">
-    <PageHeader>Professional Experience</PageHeader>
-    {
+  <>
+    <Head>
+      <title>Work</title>
+      <meta name="Work page" content="Work experience page for portfolio website" />
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
+    <div style={{ marginLeft: '10%' }} className="w-4/5 pt-28 mb-20">
+      <PageHeader>Professional Experience</PageHeader>
+      {
       workData.map(({
         about, title, company, date, first, last,
       }) => (
@@ -236,7 +243,8 @@ const Work: NextPage = () => (
         />
       ))
     }
-  </div>
+    </div>
+  </>
 );
 
 export default Work;
