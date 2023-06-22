@@ -12,6 +12,7 @@ import Head from 'next/head';
 import PageHeader from '~/components/text/PageHeader';
 import Carousel from '~/components/display/Carousel';
 import BoldText from '~/components/text/BoldText';
+import PageAnimationWrapper from '~/components/wrapper/PageAnimationWrapper';
 
 interface Props {
   images: StaticImageData[],
@@ -183,22 +184,24 @@ const Projects: NextPage = () => (
       <meta name="Projects page" content="Projects page for portfolio website" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <main style={{ marginLeft: '10%' }} className="w-4/5 pt-28 mb-20">
-      <PageHeader>Projects</PageHeader>
-      {projectData.map(({
-        images, width, name, title, body, reverse, github,
-      }) => (
-        <ProjectSection
-          images={images}
-          width={width}
-          name={name}
-          title={title}
-          body={body}
-          reverse={reverse}
-          github={github}
-        />
-      ))}
-    </main>
+    <PageAnimationWrapper>
+      <main style={{ marginLeft: '10%' }} className="w-4/5 pt-28 mb-20">
+        <PageHeader>Projects</PageHeader>
+        {projectData.map(({
+          images, width, name, title, body, reverse, github,
+        }) => (
+          <ProjectSection
+            images={images}
+            width={width}
+            name={name}
+            title={title}
+            body={body}
+            reverse={reverse}
+            github={github}
+          />
+        ))}
+      </main>
+    </PageAnimationWrapper>
   </>
 );
 
