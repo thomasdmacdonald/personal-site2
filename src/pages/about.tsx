@@ -4,9 +4,11 @@ import {
   AcademicCapIcon,
 } from '@heroicons/react/24/solid';
 
+import Head from 'next/head';
 import PageHeader from '~/components/text/PageHeader';
 import LogoAvatar from '~/components/display/LogoAvatar';
 import BoldText from '~/components/text/BoldText';
+import PageAnimationWrapper from '~/components/wrapper/PageAnimationWrapper';
 
 const aboutBlurb = [
   <>
@@ -237,30 +239,39 @@ const gridData = [
 ];
 
 const About: NextPage = () => (
-  <div style={{ marginLeft: '10%' }} className="w-4/5 pt-28 mb-20">
-    <div className="flex flex-col md:flex-row justify-between">
-      <PageHeader>About</PageHeader>
-      <div className="rounded-full neuShadowOut flex flex-row items-center py-2 pr-12 pl-12 sm:pl-2 mb-8">
-        <div className="rounded-full neuShadowIn p-2 mr-2 invisible absolute sm:visible sm:relative">
-          <AcademicCapIcon className="h-16 text-stone-600" />
+  <>
+    <Head>
+      <title>About</title>
+      <meta name="About page" content="About page for portfolio website" />
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
+    <PageAnimationWrapper>
+      <main style={{ marginLeft: '10%' }} className="w-4/5 pt-28 mb-20">
+        <div className="flex flex-col md:flex-row justify-between">
+          <PageHeader>About</PageHeader>
+          <div className="rounded-full neuShadowOut flex flex-row items-center py-2 pr-12 pl-12 sm:pl-2 mb-8">
+            <div className="rounded-full neuShadowIn p-2 mr-2 invisible absolute sm:visible sm:relative">
+              <AcademicCapIcon className="h-16 text-stone-600" />
+            </div>
+            <div>
+              <p className="text-lg font-bold">University of Toronto</p>
+              <p className="text-sm font-bold">2017-2021, High Distinction</p>
+              <p className="text-sm text-stone-700">Computer Science Specialist</p>
+              <p className="text-sm text-stone-700">Statistics Minor</p>
+            </div>
+          </div>
         </div>
-        <div>
-          <p className="text-lg font-bold">University of Toronto</p>
-          <p className="text-sm font-bold">2017-2021, High Distinction</p>
-          <p className="text-sm text-stone-700">Computer Science Specialist</p>
-          <p className="text-sm text-stone-700">Statistics Minor</p>
+        {aboutBlurb.map((text, i) => (
+          <p key={i} className="text-lg mb-4">{text}</p>
+        ))}
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg-grid-cols-3 xl:grid-cols-3 gap-10 mt-8">
+          {gridData.map(({ header, body, logos }) => (
+            <AboutSection key={header} header={header} body={body} logos={logos} />
+          ))}
         </div>
-      </div>
-    </div>
-    {aboutBlurb.map((text, i) => (
-      <p key={i} className="text-lg mb-4">{text}</p>
-    ))}
-    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg-grid-cols-3 xl:grid-cols-3 gap-10 mt-8">
-      {gridData.map(({ header, body, logos }) => (
-        <AboutSection key={header} header={header} body={body} logos={logos} />
-      ))}
-    </div>
-  </div>
+      </main>
+    </PageAnimationWrapper>
+  </>
 );
 
 export default About;
