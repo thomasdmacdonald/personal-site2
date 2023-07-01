@@ -33,8 +33,8 @@ const ProjectSection : React.FC<Props> = ({
     </div>
     <div className="mr-0 lg:mr-8">
       <div className="mb-6">
-        <p className="text-3xl font-bold">{name}</p>
-        <p className="text-lg font-bold">{title}</p>
+        <p className="text-3xl font-bold tracking-tight">{name}</p>
+        <p className="text-lg font-bold text-primary">{title}</p>
         <a href={github} className="text-stone-700 italic break-all" target="_blank" rel="noreferrer">{github}</a>
       </div>
       {body.map((text) => (
