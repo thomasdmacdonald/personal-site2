@@ -51,11 +51,11 @@ const Home: NextPage = () => {
           </div>
 
           <div className="flex flex-col-reverse px-10 md:px-20 h-2/5 bg-gradient-to-r from-red-500 to-orange-500 rounded-bl-3xl z-10">
-            <p className="text-5xl md:text-8xl text-neu font-bold">Thomas</p>
+            <p className="text-5xl md:text-8xl text-neu font-bold tracking-tight">Thomas</p>
             <p className="text-lg text-neu font-bold">Hi, my name is</p>
           </div>
           <div className="px-10 md:px-20 h-3/5 bg-neu rounded-tr-3xl z-10">
-            <p className={`${colorOn ? 'text-primary' : 'text-neu'} text-5xl md:text-8xl font-bold textShadowOut transitionSlow`}>MacDonald</p>
+            <p className={`${colorOn ? 'text-primary' : 'text-neu'} text-5xl md:text-8xl font-bold textShadowOut transitionSlow tracking-tight`}>MacDonald</p>
             <div className="h-20" />
             <p className="text-lg text-stone-700 font-bold mb-2">I am a . . .</p>
             <Toggle active={colorOn} setActive={setColorOn} />

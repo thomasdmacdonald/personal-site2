@@ -22,7 +22,7 @@ const aboutBlurb = [
     I love taking products from the drawing board to users&apos; hands,
     and am always working to improve my knowledge, speed, skill, and discretion while developing.
   </>,
-  "Here are some of the skills I've devloped on my journey as a software engineer:",
+  "Here are some of the skills I've developed on my journey as a software engineer:",
 ];
 
 const frontendBlurb = [
@@ -196,7 +196,7 @@ const AboutSection : React.FC<AboutSectionProps> = ({ header, body, logos }) => 
         }}
       >
         <div className="flex flex-row items-center flex-wrap">
-          <p className="text-3xl font-bold mr-4 mb-4">{header}</p>
+          <p className="text-3xl font-bold mr-4 mb-4 tracking-tight">{header}</p>
           <div className="flex flex-row mb-4">
             {
               logos.map((logo) => <LogoAvatar key={logo} logo={logo} />)
